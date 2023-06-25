@@ -24,3 +24,4 @@ this part to the `&XC` section. For higher versions, this isn't required.
   XC_DERIV SPLINE2_SMOOTH
 &END XC_GRID
 ```
+and then ...
