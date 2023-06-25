@@ -3,7 +3,7 @@
 
 Below you can find the details about how we use these inputs and files to study electronic and optical properties of `Cd33S33 Quantum structure` by density functional theory. also Accounting for many body effects done.
 We highly welcome improving the functionality of the input files in this repository. So, please feel free to share your inputs and timings with us if you used these inputs.
-More details on how to run the code are brought in (https://github.com/compchem-cybertraining/Tutorials_Libra/tree/master/6_dynamics/2_nbra_workflows) repository. Detailed explanations about installation and running the CP2K inputs can be found in [`here`](https://github.com/compchem-cybertraining/Tutorials_CP2K).
+More details on how to run the code are brought in (https://github.com/compchem-cybertraining/Tutorials_Libra/tree/master/6_dynamics/2_nbra_workflows) repository. Detailed explanations about installation and running the CP2K inputs can be found in [here](https://github.com/compchem-cybertraining/Tutorials_CP2K).
 
 # geometry_optimization
 In this research, after downloading the (CdS)33 quantum dot structure, optimization steps were performed for it that in `cds33.xyz` is demonstrated.
