@@ -2,7 +2,9 @@
 (CdS)33 Quantum dots Studied by density functional theory: Electronic and Optical Properties and Accounting for many body effects
 
 Below you can find the details about how we use these inputs and files to study electronic and optical properties of `Cd33S33 Quantum structure` by density functional theory. also Accounting for many body effects done.
-In this research, after downloading the (CdS)33 quantum dot structure, optimization steps were performed for it.
-the details of which are given in part `geometry optimization`.
-and then ..
+We highly welcome improving the functionality of the input files in this repository. So, please feel free to share your inputs and timings with us if you used these inputs.
+More details on how to run the code are brought in [https://github.com/compchem-cybertraining/Tutorials_Libra/tree/master/6_dynamics/2_nbra_workflows](url) repository. Detailed explanations about installation and running the CP2K inputs can be found in [https://github.com/compchem-cybertraining/Tutorials_CP2K](url)
+In this research, after downloading the (CdS)33 quantum dot structure, optimization steps were performed for it that in `cds33.xyz` is demonstrated.
+the details of which are given in part `geometry_optimization`.
+in the next step, we perform molecular_dynamics with files and cod in the determined folder.
 
