@@ -1,0 +1,26 @@
+# TD-DFT calculations in CP2K
+
+In order to perform TD-DFT calculations in CP2K, you need to the following the `&FORCE_EVAL` section of the input:
+```
+&PROPERTIES
+  &TDDFPT
+     NSTATES     20            # number of excited states
+     MAX_ITER    200           # maximum number of Davidson iterations
+     CONVERGENCE [eV] 1.0e-5   # convergence on maximum energy change between iterations
+     &MGRID
+        NGRIDS 16
+        CUTOFF 500 # separate cutoff for TDDFPT calc
+     &END
+     ! Only in case you have a tdwfn file from previous calculations
+     !RESTART     .TRUE.
+     !WFN_RESTART_FILE_NAME RESTART.tdwfn
+  &END TDDFPT
+&END PROPERTIES
+```
+The `NGRIDS` and cutoff are chosen the same as in the SCF calculations although you can run another convergence analysis for that too. One can also use the `RESTART` for TD-DFT calculations. To this end, you will need to add the `.tdwfn` file from previous calculations in front of `WFN_RESTART_FILE_NAME`. In CP2K v6.1 one also needs to add
+this part to the `&XC` section. For higher versions, this isn't required.
+```
+&XC_GRID
+  XC_DERIV SPLINE2_SMOOTH
+&END XC_GRID
+```
