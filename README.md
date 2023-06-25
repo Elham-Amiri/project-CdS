@@ -14,5 +14,6 @@ the details of which are given in part `geometry_optimization`.
 in the next step, we perform molecular_dynamics with files and cods in the determined folder. 
 
 ## TDDFT
-
+TDDFT stands for "time_dependent density functional theory" which can be used to calculate spectral characteristics such as the maximum excitation energy and then the oscillation power.
+The time-dependent density functional theory offers an appropriate framework for examining the system's excitation and evolution, while the density functional theory is a suitable method for determining the system's fundamental state. The "absorption problem" in quantum mechanics is resolved by this theory using dense functional theory.
 
