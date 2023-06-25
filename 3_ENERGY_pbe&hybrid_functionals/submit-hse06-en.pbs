@@ -1,0 +1,19 @@
+#PBS -S /bin/bash
+### General Options ###
+#PBS -N cds33-hse06-en
+#PBS -V
+### Resource Handling ###
+#PBS -l nodes=1:ppn=25
+#PBS -q GPU
+#PBS -l walltime=70:00:00
+### Output Stream Options ###
+### Mail Options ###
+#PBS -m bea
+ 
+### Bash script ###
+cd /home/99425001/Desktop/CP2K_Libra_Manual/hybrid_functional/hse06_cds33
+source /home/99425001/cp2k-v7/cp2k-7.1.0/tools/toolchain/install/setup
+mpirun -np 25 /home/99425001/cp2k-v7/cp2k/exe/local/cp2k.popt -i hse06.inp -o outcds33-energy.log
+
+
+exit 0
