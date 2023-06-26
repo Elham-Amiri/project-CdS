@@ -16,23 +16,24 @@ Other required files for running the CP2K input file are basis set and pseudopot
 
 [Difference between TD-DFT and TD-DFPT](https://groups.google.com/g/cp2k/c/xj8udnSyeEI)
 
-The keyword `RESTART` increases the speed of calculations, both for SCF and TD-DFPT calculations. Therefore, the `RESTART` is required to be set to `.TRUE.` in `TDDFPT` section. Also, the `WFN_RESTART_FILE_NAME` in this section should exist with a random `tdwfn` file name. The same is also needed in the `FORCE_EVAL` section. `WFN_RESTRAT_FILE_NAME` should exist in the input with a random `wfn` file name. 
 
-In the `&MO_CUBES` section, the number of occupied and unoccupied orbitals must be specified. This depends on the TD-DFPT calculations and the user must make a good guess to make sure that the cube files of all the states in the excitation analysis of TD-DFPT calculations exist. 
+## 3. Run all the jobs through `run.py`
 
-## 2. Bash file for running the calculations for one job
+The required inputs in the `run.py` file are as follows:
 
-The standard sample bash file for submitting the calculations and running the Python code through `slurm` and `sbatch` is the `submit_template.slm`. First one should load all needed modules including the modules required for loading CP2K. This file contains the input variables required for calculations of the overlap matrices and NACs. We list the variables as follows:
+`trajectory_xyz_file`: The user must specify the full path of the trajectory `xyz` file or the name of the file if it is in the current folder. 
 
-`nprocs`: The number of processors used for calculations. Note that the same number of processors should be specified in the `#SBATCH --ntasks-per-node` above.
+`es_software_input_template`: The input template for the electronic structure calculations. Here, the input template is `cp2k_input_template.inp` file.
 
-`cp2k_exe`: The executable CP2K or the full path to executable CP2K folder.
+`es_software`: The name of the electronic structure calculations software e.g. `cp2k`.
 
-`res`: The directory for storing the overlap matrices and NACs.
+`istep`: The initial step from the _trajectory `xyz` file_. 
 
-`min_band`: The minimum KS orbital index to be considered.
+`fstep`: The final step from the _trajectory `xyz` file_. 
 
-`max_band`: The maximum KS orbital index to be considered.
+`njobs`: The total number of jobs that the user wants to submit. The maximum number of jobs must be less than half of the total steps i.e. `fstep-istep+1`.
 
-`ks_orbital_homo_index`: The HOMO index for KS orbitals.
+`os.system("sbatch submit_"+str(njob)+".slm")`: The jobs are submitted through this line of code at the end of the `run.py`. Please, change it according to your HPC submission platform. For example if you use `pbs` files and you use `qsub`, after preparing the `submit_template.pbs` the same as `submit_template.slm` you can change this line to `os.system("qsub submit_"+str(njob)+".pbs")`.
+
+**_Note_:** you can read this [READMI](https://github.com/MohammadShakiba/Project_Libra_CP2K/tree/master/Cd33Se33/step2) for have more and complite information.
 
