@@ -1,6 +1,6 @@
 # TD-DFT calculations in CP2K
 
-## 1. CP2K input for electronic structure calculations
+## CP2K input for electronic structure calculations
 
 `cp2k_input_template.inp`
 
@@ -17,7 +17,7 @@ Other required files for running the CP2K input file are basis set and pseudopot
 [Difference between TD-DFT and TD-DFPT](https://groups.google.com/g/cp2k/c/xj8udnSyeEI)
 
 
-## 3. Run all the jobs through `run.py`
+## Run all the jobs through `run.py`
 
 The required inputs in the `run.py` file are as follows:
 
@@ -33,7 +33,6 @@ The required inputs in the `run.py` file are as follows:
 
 `njobs`: The total number of jobs that the user wants to submit. The maximum number of jobs must be less than half of the total steps i.e. `fstep-istep+1`.
 
-`os.system("sbatch submit_"+str(njob)+".slm")`: The jobs are submitted through this line of code at the end of the `run.py`. Please, change it according to your HPC submission platform. For example if you use `pbs` files and you use `qsub`, after preparing the `submit_template.pbs` the same as `submit_template.slm` you can change this line to `os.system("qsub submit_"+str(njob)+".pbs")`.
+`os.system("sbatch submit_"+str(njob)+".slm")`: The jobs are submitted through this line of code at the end of the `run.py`. Please, change it according to your HPC submission platform. For example, if you use `pbs` files and you use `qsub`, after preparing the `submit_template.pbs` the same as `submit_template.slm` you can change this line to `os.system("qsub submit_"+str(njob)+".pbs")`.
 
-**_Note_:** you can read this [READMI](https://github.com/MohammadShakiba/Project_Libra_CP2K/tree/master/Cd33Se33/step2) for have more and complite information.
-
+**_Note_:** You can get more and  complete information by reading this [README](https://github.com/MohammadShakiba/Project_Libra_CP2K/tree/master/Cd33Se33/step2)
