@@ -1,0 +1,23 @@
+#PBS -S /bin/bash
+### General Options ###
+#PBS -N geo_opt.inp
+#PBS -V
+### Resource Handling ###
+#PBS -l nodes=1:ppn=25
+#PBS -q bahonar
+#PBS -l walltime=50:00:00
+### Output Stream Options ###
+### Mail Options ###
+#PBS -m bea
+     
+### Bash script ###
+
+cd /home/99425001/Desktop/CP2K_Libra_Manual/geometry_optimization/CdS
+  
+module load intel-mpi-7  
+module load cp2k-6.1
+  
+mpirun -np 25 cp2k.psmp -i geo_opt.inp -o out_cds33_geo_opt.log
+
+exit 0
+
