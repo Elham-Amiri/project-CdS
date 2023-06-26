@@ -1,36 +1,12 @@
 # TD-DFT calculations in CP2K
 
-In order to perform TD-DFT calculations in CP2K, you need to the following the `&FORCE_EVAL` section of the input:
-```
-&PROPERTIES
-  &TDDFPT
-     NSTATES     20            # number of excited states
-     MAX_ITER    200           # maximum number of Davidson iterations
-     CONVERGENCE [eV] 1.0e-5   # convergence on maximum energy change between iterations
-     &MGRID
-        NGRIDS 16
-        CUTOFF 500 # separate cutoff for TDDFPT calc
-     &END
-     ! Only in case you have a tdwfn file from previous calculations
-     !RESTART     .TRUE.
-     !WFN_RESTART_FILE_NAME RESTART.tdwfn
-  &END TDDFPT
-&END PROPERTIES
-```
-The `NGRIDS` and cutoff are chosen the same as in the SCF calculations although you can run another convergence analysis for that too.
-```
-&XC_GRID
-  XC_DERIV SPLINE2_SMOOTH
-&END XC_GRID
-```
-
 ## 1. CP2K input for electronic structure calculations
 
 `cp2k_input_template.inp`
 
-This file is a template of a cp2k input file and is used to compute the electronic structure of the system along the precomputed nuclear trajectory. SCF calculations are called with the parameter `RUN_TYPE ENERGY`. 
+This file is a template of a cp2k input file and is used to compute the electronic structure of the system along the precomputed nuclear trajectory. SCF calculations are called with the parameter `RUN_TYPE ENERGY`. The input should be able to compute the TD-DFT calculations, producing the cube files and PDOS files.
 
-In the section FORCE_EVAL < PROPERTIES, is the input needed to compute TD-DFT calculations. If one wishes to compute only KS properties (overlaps, energies) one can delete this section. One would also need to set completion_level = 0 in the file submit_template.slm. One can set completion_level = 0 and also perform TDDFT calculations as well. In this case, the computation of the MB basis would be done in a post-process style. This is what we do here. 
+In the section FORCE_EVAL < PROPERTIES, is the input needed to compute TD-DFT calculations. One would also need to set completion_level = 0 in the file submit_template.slm.  
 
 If the user needs to change the cp2k input, the changes should be done to this input file. One must make sure that the cube files can be produced via WRITE_CUBE .TRUE. 
 
