@@ -17,11 +17,10 @@ In order to perform TD-DFT calculations in CP2K, you need to the following the `
   &END TDDFPT
 &END PROPERTIES
 ```
-The `NGRIDS` and cutoff are chosen the same as in the SCF calculations although you can run another convergence analysis for that too. One can also use the `RESTART` for TD-DFT calculations. To this end, you will need to add the `.tdwfn` file from previous calculations in front of `WFN_RESTART_FILE_NAME`. In CP2K v6.1 one also needs to add
-this part to the `&XC` section. For higher versions, this isn't required.
+The `NGRIDS` and cutoff are chosen the same as in the SCF calculations although you can run another convergence analysis for that too.
 ```
 &XC_GRID
   XC_DERIV SPLINE2_SMOOTH
 &END XC_GRID
 ```
-and then ...
+and ...
